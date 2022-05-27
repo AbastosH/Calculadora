@@ -1,0 +1,88 @@
+/*===GERAL ======================================================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%; /*1rem = 10px*/
+
+  --hue: 285;
+
+  --primary-color: hsl(var(--hue), 100%, 26%);
+  --brand-light: hsl(calc(var(--hue) - 22), 23%, 89%);
+  --brand-light-02: hsl(calc(var(--hue) + 10), 14%, 97%);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  font-size: 2rem;
+
+
+  /* Degrade do background */
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--brand-light)
+  );
+}
+
+/*===CALCULATOR GRID Buttons======================================================*/
+
+.calculator-grid {
+  display: grid;
+  /*Fazendo o display da calculadora e organizando as linhas e colunas*/
+  grid-template-columns: repeat(4, 10rem);
+  grid-template-rows: minmax(12rem, auto) repeat(5, 10rem);
+
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+/*Estilizando a caixa de cada um dos botoes*/
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: hsla(0, 0%, 100%, 0.75);
+}
+.calculator-grid > button:hover {
+  background-color: hsla(0, 0%, 100%, 0.9);
+}
+
+/*Estilizando a caixa de dos botoes AC e = pois ocupam 2 caixas no grid*/
+.calculator-grid .span-two {
+  grid-column: span 2;
+}
+
+/*===CALCULATOR GRID Display======================================================*/
+
+.calculator-grid .output {
+  grid-column: 1 / -1;
+  background-color: hsla(0, 0%, 0%, 0.75);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 1rem;
+
+  /*Quebra de linhas para caber dentro da caixa se of chars forem mto longos */
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.calculator-grid .output .previous-operand {
+  color: hsla(0, 0%, 100%, 0.75);
+  font-size: 1.5rem;
+}
+
+.calculator-grid .output .current-operand {
+  color: hsl(0, 0%, 100%);
+  font-size: 2.5rem;
+}
